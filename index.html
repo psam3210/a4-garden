@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garden</title>
+  <style>
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #garden {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #controls {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1;
+      border: 1px solid gray;
+      padding: 10px;
+      box-shadow: 3px 3px 3px rgba(0,0,0, .3);
+      background-color: white;
+      
+    }
+
+    #controls .shape-specific {
+      display: none;
+      flex-direction: column;
+    }
+
+    #controls .shape-specific div {
+      display: flex;
+      gap: 10px;
+    }
+
+    .input-range {
+      display: flex;
+      flex-direction: column;
+    }
+
+    datalist {
+      display: flex;
+      justify-content: space-between;
+      font-size: smaller;
+    }
+
+    #controls input[type="radio"][value="circle"]:checked ~ #circle-params {
+      display: flex;
+    }
+
+    #controls input[type="radio"][value="rectangle"]:checked ~ #rectangle-params {
+      display: flex;
+    }
+  </style>  
+</head>
+<body>
+  <div id="garden"></div>
+  <div id="controls">
+    Select a shape<br>
+    <input type="radio" id="rectangle" name="shape" value="rectangle" checked>
+    <label for="rectangle">Rectangle</label>
+    <br>
+    <input type="radio" id="circle" name="shape" value="circle">
+    <label for="circle">Circle</label>
+    <div class="shape-specific" id="rectangle-params">
+      Rectangle parameters
+      <div>
+        <label for="rectangle-width">Width</label>
+        <div class="input-range">
+          <input type="range" id="rectangle-width" name="rectangle-width" value="25" min="1" max="1000" step="1" list="tickmarks-rectangle-width">
+          <datalist id="tickmarks-rectangle-width">
+          <option value="1" label="1px"></option>
+          <option value="500" label="500px"></option>
+          <option value="1000" label="1000px"></option>
+          </datalist>
+        </div>
+      </div>
+      <div>
+        <label for="rectangle-height">Height</label>
+        <div class="input-range">
+          <input type="range" id="rectangle-height" name="rectangle-height" value="25" min="1" max="1000" step="1" list="tickmarks-rectangle-height">
+            <datalist id="tickmarks-rectangle-height">
+            <option value="1" label="1px"></option>
+            <option value="500" label="500px"></option>
+            <option value="1000" label="1000px"></option>
+            </datalist>
+          </div>
+      </div>
+      <div>
+        <label for="rectangle-color">Color</label>
+        <input type="color" id="rectangle-color" name="rectangle-color">
+      </div>
+    </div>
+    <div class="shape-specific" id="circle-params">
+      Circle parameters
+      <div>
+        <label for="circle-height">Radius</label>
+        <div class="input-range">
+          <input type="range" id="circle-radius" name="circle-radius" value="25" min="1" max="1000" step="1" list="tickmarks-circle-radius">
+            <datalist id="tickmarks-circle-radius">
+            <option value="1" label="1px"></option>
+            <option value="500" label="500px"></option>
+            <option value="1000" label="1000px"></option>
+            </datalist>
+          </div>
+      </div>
+      <div>
+        <label for="circle-color">Color</label>
+        <input type="color" id="circle-color" name="circle-color">
+      </div>
+    </div>
+    <br>
+    <button id="clear">Clear</button>
+  </div>
+  
+  
+  <script type="module">
+    import Garden from './garden.js';
+
+    let g = new Garden(document.getElementById('garden'), document.getElementById('controls'));
+
+    document.querySelector('#clear').addEventListener('click', () => {
+      g.clear();
+    })
+  </script>
+</body>
+</html>
