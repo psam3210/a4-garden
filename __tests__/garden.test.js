@@ -34,10 +34,6 @@ describe('Set shape correctly', () => {
       height: 25,
       width: 25,
       type: 'rectangle',
-      pos: {
-        x: 0,
-        y: 0
-      }
     });
   });
 
@@ -49,10 +45,6 @@ describe('Set shape correctly', () => {
       color: '#000000',
       radius: 25,
       type: 'circle',
-      pos: {
-        x: 0,
-        y: 0
-      }
     });
   });
 });
