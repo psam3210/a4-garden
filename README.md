@@ -68,10 +68,10 @@ The `#controls` div contains the following input controls:
 For `<input>` values, you can use `element.querySelector()` to target the element and the `value` property to get its value as a string. You may need to then wrap it in `parseInt()` in order to get an integer value. Here’s an example:
 
 ```js
-document.querySelector(input[name="shape"]:checked.value // Gets the value of the checked radio button: 'rectangle' or 'circle'
+document.querySelector('input[name="shape"]:checked').value // Gets the value of the checked radio button: 'rectangle' or 'circle'
 
-document.querySelector(input[name="rectangle-height"]).value // Gets the value of the rectangle height: '25'
-parseInt(document.querySelector(input[name="rectangle-height"]).value) // Gets the value of the rectangle height, and then parses it as an integer: 25
+document.querySelector('input[name="rectangle-height"]').value // Gets the value of the rectangle height: '25'
+parseInt(document.querySelector('input[name="rectangle-height"]').value) // Gets the value of the rectangle height, and then parses it as an integer: 25
 ```
 
 Each `<input>` element has a `name` attribute which you can use to target it using `querySelector()`. Keep in mind that you will have to use `this.controlsEl.querySelector()` when you call it from `garden.js`.
