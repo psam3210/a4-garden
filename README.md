@@ -29,7 +29,7 @@ We will provide the control panel, as well as the garden container, but you will
 ### Shapes
 We will create shapes out of our good friend, the `<div>` element. There are two shapes we can create: rectangles and circles. They will share certain CSS properties that you will need to adjust such as:
 
-- `color`
+- `background-color`
 - `position` (this should always be absolute)
 - `left`
 - `top`
